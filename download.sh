@@ -1,34 +1,47 @@
 #!/bin/bash
 WGET="wget"
+
 which wget > /dev/null || WGET="curl"
 which curl > /dev/null || WGET=""
-if [ "$WGET" = "" ]; then
+
+if [ "$WGET" = "" ]
+then
     echo "Cannot find wget or curl. Stop downloading."
     exit 1
 fi
 
 download(){
-    if [ "$3" != "" ]; then
+    if [ "$3" != "" ]
+    then
         f=$3
     else
         f=${1##*/}
     fi
-    if [ ! -e "$f" ]; then
-        if [ "$WGET" = "wget" ]; then
+    
+    if [ ! -e "$f" ]
+    then
+        if [ "$WGET" = "wget" ]
+        then
             wget $1
         else
             curl -L --output ${1##*/} $1
         fi
-        if [ "$3" != "" ]; then
+        
+        if [ "$3" != "" ]
+        then
             mv ${1##*/} $f
         fi
     fi
-    if [[ ! -e "$f" || $(md5sum $f | awk '{print $1}') != "$2" ]]; then
+    
+    if [[ ! -e "$f" || $(md5sum $f | awk '{print $1}') != "$2" ]]
+    then
         echo "Fail to download $f, please try again."
         rm $f 2> /dev/null
+        
         exit 1
     fi
 }
+
 download "https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz" "82d05e03b93e45f5a39b828dc9c6c29b"
 download "https://ftp.gnu.org/gnu/automake/automake-1.16.1.tar.gz" "83cc2463a4080efd46a72ba2c9f6b8f5"
 download "https://github.com/curl/curl/releases/download/curl-7_60_0/curl-7.60.0.tar.gz" "48eb126345d3b0f0a71a486b7f5d0307"
