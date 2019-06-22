@@ -1,7 +1,9 @@
 #!/bin/bash
-source ./prepare.sh
 
-if [ ! -e $LOCALDIR/cacert.pem ]; then
+source ./prepare.sh $1
+
+if [ ! -e $LOCALDIR/cacert.pem ]
+then
     curl -kL --output $LOCALDIR/cacert.pem https://curl.haxx.se/ca/cacert.pem 
 fi
 
