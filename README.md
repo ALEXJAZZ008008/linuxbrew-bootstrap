@@ -1,5 +1,5 @@
 # Introduction
-This scripts help you to install Linuxbrew (http://linuxbrew.sh/)
+These scripts help you to install Linuxbrew (http://linuxbrew.sh/)
 without root privilleges in minimum linux environments.
 
 # Requirements
@@ -12,7 +12,7 @@ $ apt-get install libdata-dump-perl
 
 # Install
 1. Clone this repository to $WORK directory
-2. run
+2. Run
    `$ ./run.sh $(pwd)`
 3. If glibc will not install, patch with
    `brew edit glibc`
