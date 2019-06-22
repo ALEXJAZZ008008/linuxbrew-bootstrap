@@ -35,10 +35,10 @@ export HOMEBREW_TEMP=/SAN/inm/moco/aaaALEX/.temp
 export HOMEBREW_LOGS=/SAN/inm/moco/aaaALEX/.log
 
 prefix=~/.linuxbrew
-ln -s /share/apps/gcc-6.2.0/bin/gcc $prefix/bin/gcc-6.2.0
-ln -s /share/apps/gcc-6.2.0/bin/g++ $prefix/bin/g++-6.2.0
-ln -s /share/apps/gcc-6.2.0/bin/gfortran $prefix/bin/gfortran-6.2.0
-export HOMEBREW_CC=gcc-6.2.0
+ln -s /share/apps/gcc-6.2.0/bin/gcc $prefix/bin/gcc-6.2
+ln -s /share/apps/gcc-6.2.0/bin/g++ $prefix/bin/g++-6.2
+ln -s /share/apps/gcc-6.2.0/bin/gfortran $prefix/bin/gfortran-6.2
+export HOMEBREW_CC=gcc
 brew install hello && brew test -v hello; brew remove hello
 
 brew update
