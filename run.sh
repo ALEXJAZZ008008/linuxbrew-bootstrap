@@ -1,2 +1,2 @@
 ./download.sh
-./install.sh
+./install.sh $1
