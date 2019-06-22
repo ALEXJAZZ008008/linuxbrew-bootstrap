@@ -44,31 +44,33 @@ brew link gcc
 mkdir -p "$prefix"'/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig'
 gcc -dumpspecs > "$prefix"'/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig'
 
-brew install glibc
+brew install -v glibc
 
 brew unlink gcc
 rm -rf "$prefix"'/Cellar/gcc/'
-brew install gcc
+brew install -v gcc
 
-brew install hello
+brew install -v hello
 brew test -v hello
 brew remove hello
 
 brew update
-brew install bzip2
+brew install -v bzip2
 
 # Modify bunzip2 path forcedly
 BUNZIP_RB=$HOME/.linuxbrew/Homebrew/Library/Homebrew/unpack_strategy/bzip2.rb
 mv $BUNZIP_RB $BUNZIP_RB.orig
 sed 's#bunzip2#'$(which bunzip2)'#' $BUNZIP_RB.orig > $BUNZIP_RB
 
-brew install curl
-brew install git
+brew install -v curl
+brew install -v git
 
 mv $CURL_RB.orig $CURL_RB
 mv $BUNZIP_RB.orig $BUNZIP_RB
 
-brew install llvm
+brew install -v llvm
 
 brew tap linuxbrew/homebrew-xorg
-brew install xorg
+brew install -v xorg
+
+brew install -v fish
