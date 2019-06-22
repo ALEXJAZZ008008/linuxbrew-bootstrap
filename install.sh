@@ -4,6 +4,7 @@ source ./prepare.sh
 if [ ! -e $LOCALDIR/cacert.pem ]; then
     curl -kL --output $LOCALDIR/cacert.pem https://curl.haxx.se/ca/cacert.pem 
 fi
+
 export CURL_CA_BUNDLE=$LOCALDIR/cacert.pem
 export GIT_SSL_NO_VERIFY=1
 export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
@@ -35,11 +36,23 @@ export HOMEBREW_TEMP=/SAN/inm/moco/aaaALEX/.temp
 export HOMEBREW_LOGS=/SAN/inm/moco/aaaALEX/.log
 
 prefix=~/.linuxbrew
-ln -s /share/apps/gcc-6.2.0/bin/gcc $prefix/bin/gcc-6.2
-ln -s /share/apps/gcc-6.2.0/bin/g++ $prefix/bin/g++-6.2
-ln -s /share/apps/gcc-6.2.0/bin/gfortran $prefix/bin/gfortran-6.2
-export HOMEBREW_CC=gcc
-brew install hello && brew test -v hello; brew remove hello
+mkdir -p "$prefix"'/Cellar/gcc/6.2.0/'
+cp -r /share/apps/gcc-6.2.0/* "$prefix"'/Cellar/gcc/6.2.0/'
+
+brew link gcc
+
+mkdir -p "$prefix"'/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig'
+gcc -dumpspecs > "$prefix"'/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig'
+
+brew install glibc
+
+brew unlink gcc
+rm -rf "$prefix"'/Cellar/gcc/'
+brew install gcc
+
+brew install hello
+brew test -v hello
+brew remove hello
 
 brew update
 brew install bzip2
@@ -51,7 +64,11 @@ sed 's#bunzip2#'$(which bunzip2)'#' $BUNZIP_RB.orig > $BUNZIP_RB
 
 brew install curl
 brew install git
-brew install gcc
 
 mv $CURL_RB.orig $CURL_RB
 mv $BUNZIP_RB.orig $BUNZIP_RB
+
+brew install llvm
+
+brew tap linuxbrew/homebrew-xorg
+brew install xorg
