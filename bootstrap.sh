@@ -17,6 +17,8 @@ export HOMEBREW_CACHE=/SAN/inm/moco/aaaALEX/.cache
 export HOMEBREW_TEMP=/SAN/inm/moco/aaaALEX/.temp
 export HOMEBREW_LOGS=/SAN/inm/moco/aaaALEX/.log
 
+brew install gcc --without-glibc --only-dependencies
+
 prefix=~/.linuxbrew
 mkdir -p "$prefix"'/Cellar/gcc/6.2.0/'
 cp -r /share/apps/gcc-6.2.0/* "$prefix"'/Cellar/gcc/6.2.0/'
@@ -30,17 +32,6 @@ brew install -v gmp
 brew install -v isl@0.18
 brew install -v libmpc
 brew install -v mpfr
-brew install -v m4
-brew install -v pkg-config
-brew install -v gpatch
-brew install -v ncurses
-brew install -v gettext
-brew install -v bzip2
-brew install -v pcre2
-brew install -v openssl
-brew install -v curl
-brew install -v libbsd
-brew install -v expat
 
 brew install -v glibc
 
