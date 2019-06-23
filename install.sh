@@ -36,9 +36,4 @@ brew install -v git
 mv $CURL_RB.orig $CURL_RB
 mv $BUNZIP_RB.orig $BUNZIP_RB
 
-brew install -v llvm
-
-brew tap linuxbrew/homebrew-xorg
-brew install -v xorg
-
-brew install -v fish
+./config.sh
