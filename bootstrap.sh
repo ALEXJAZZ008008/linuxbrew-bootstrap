@@ -30,6 +30,18 @@ brew install -v gmp
 brew install -v isl@0.18
 brew install -v libmpc
 brew install -v mpfr
+brew install -v m4
+brew install -v pkg-config
+brew install -v gpatch
+brew install -v ncurses
+brew install -v gettext
+brew install -v bzip2
+brew install -v pcre2
+brew install -v openssl
+brew install -v curl
+brew install -v libbsd
+brew install -v expat
+
 brew install -v glibc
 
 brew unlink gcc
