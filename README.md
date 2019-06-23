@@ -14,12 +14,23 @@ $ apt-get install libdata-dump-perl
 1. Clone this repository to $WORK directory
 2. Run
    `$ ./run.sh $(pwd)`
-3. If glibc will not install, patch with
+   a prompt should appear to patch glibc, when it does replace
+   `specs = Pathname.new(Utils.popen_read(ENV.cc, "-print-file-name=specs.orig").chomp)`
+   with
+   `specs = gcc_keg.lib/"gcc/x86_64-unknown-linux-gnu/#{gcc_keg.version}/specs.orig"`
+
+If glibc will not install
+
+3. Manually copy and link gcc5+, patch glibc with
    `brew edit glibc`
    replace
    `specs = Pathname.new(Utils.popen_read(ENV.cc, "-print-file-name=specs.orig").chomp)`
    with
    `specs = gcc_keg.lib/"gcc/x86_64-unknown-linux-gnu/#{gcc_keg.version}/specs.orig"`
+   , install glibc, unlink gcc and then install gcc
+2. Run
+   `$ ./run.sh $(pwd)`
+
 or
    
 2. If you can use wget in your environment, run  
