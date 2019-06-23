@@ -82,7 +82,7 @@ brew install -v gperf
 brew install -v libtool
 brew install -v json-c
 brew install -v util-linux
-brew install -v fontconfig, 
+brew install -v fontconfig
 
 brew install -v glibc
 brew edit glibc
