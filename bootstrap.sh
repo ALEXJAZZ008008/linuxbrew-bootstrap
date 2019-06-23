@@ -1,10 +1,24 @@
 #!/bin/bash
 
+source /SAN/inm/tools/set_env_cluster.sh
+
+export CC=gcc
+export CXX=g++
+export EDITOR=nano
+
 export PATH=/share/apps/git-2.16.2/bin:$PATH
 export PATH=/share/apps/cmake-3.12.0/bin:$PATH
 export PATH=/share/apps/automake-1.15/bin/:$PATH
 export PATH=/share/apps/autoconf-2.69/bin/:$PATH
 export PATH=/share/apps/gcc-6.2.0/bin/:$PATH
+
+export PATH=~/.linuxbrew/sbin:$PATH
+export PATH=~/.linuxbrew/bin:$PATH
+
+export XDG_DATA_DIRS=~/.linuxbrew/share:$XDG_DATA_DIRS
+
+alias ruby=~/.linuxbrew/Homebrew/Library/Homebrew/vendor/portable-ruby/current/bin/ruby
+alias brew=~/.linuxbrew/bin/brew
 
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_FILTERING=1
@@ -19,21 +33,19 @@ export HOMEBREW_LOGS=/SAN/inm/moco/aaaALEX/.log
 
 brew install gcc --without-glibc --only-dependencies
 
-export prefix=~/.linuxbrew
+echo -e "mkdir -p ~/.linuxbrew/Cellar/gcc/6.2.0/"
+mkdir -p ~/.linuxbrew/Cellar/gcc/6.2.0/
 
-echo -e 'mkdir -p '"$prefix"'/Cellar/gcc/6.2.0/'
-mkdir -p "$prefix"'/Cellar/gcc/6.2.0/'
-
-echo -e 'cp -r /share/apps/gcc-6.2.0/* '"$prefix"'/Cellar/gcc/6.2.0/'
-cp -r /share/apps/gcc-6.2.0/* "$prefix"'/Cellar/gcc/6.2.0/'
+echo -e "cp -r /share/apps/gcc-6.2.0/* ~/.linuxbrew/Cellar/gcc/6.2.0/"
+cp -r /share/apps/gcc-6.2.0/* ~/.linuxbrew/Cellar/gcc/6.2.0/
 
 brew link gcc
 
-echo -e 'mkdir -p '"$prefix"'/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig'
-mkdir -p "$prefix"'/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig'
+echo -e "mkdir -p ~/.linuxbrew/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig"
+mkdir -p ~/.linuxbrew/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig
 
-echo -e 'gcc -dumpspecs > '"$prefix"'/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig'
-gcc -dumpspecs > "$prefix"'/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig'
+echo -e "gcc -dumpspecs > ~/.linuxbrew/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig"
+gcc -dumpspecs > ~/.linuxbrew/Cellar/gcc/6.2.0/lib/gcc/x86_64-unknown-linux-gnu/6.2.0/specs.orig
 
 brew install -v gmp
 brew install -v isl@0.18
@@ -73,11 +85,13 @@ brew install -v util-linux
 brew install -v fontconfig, 
 
 brew install -v glibc
+brew edit glibc
+brew install -v glibc
 
 brew unlink gcc
 
-echo -e 'rm -rf '"$prefix"'/Cellar/gcc/'
-rm -rf "$prefix"'/Cellar/gcc/'
+echo -e "rm -rf ~/.linuxbrew/Cellar/gcc/"
+rm -rf ~/.linuxbrew/Cellar/gcc/
 
 brew install -v gcc
 
