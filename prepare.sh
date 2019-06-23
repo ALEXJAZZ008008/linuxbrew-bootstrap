@@ -1,7 +1,13 @@
 #!/bin/bash -eu
 
 mkdir -p log
-LOCALDIR=$(readlink -f "$1")
+
+if [ "$#" -ne 1 ]
+then
+    LOCALDIR=$(readlink -f ~/local)
+else
+    LOCALDIR=$(readlink -f "$1")
+fi
 
 export PATH=$LOCALDIR/bin:$PATH
 export CPATH=$LOCALDIR/include:$LOCALDIR/include/ncurses
