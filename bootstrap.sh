@@ -19,7 +19,7 @@ export HOMEBREW_LOGS=/SAN/inm/moco/aaaALEX/.log
 
 brew install gcc --without-glibc --only-dependencies
 
-prefix=~/.linuxbrew
+export prefix=~/.linuxbrew
 
 echo -e 'mkdir -p '"$prefix"'/Cellar/gcc/6.2.0/'
 mkdir -p "$prefix"'/Cellar/gcc/6.2.0/'
