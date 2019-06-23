@@ -85,6 +85,7 @@ brew install -v util-linux
 brew install -v fontconfig
 
 brew install -v glibc
+brew update
 brew edit glibc
 brew install -v glibc
 
