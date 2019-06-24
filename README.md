@@ -27,7 +27,11 @@ If glibc will not install
    `specs = Pathname.new(Utils.popen_read(ENV.cc, "-print-file-name=specs.orig").chomp)`
    with
    `specs = gcc_keg.lib/"gcc/x86_64-unknown-linux-gnu/#{gcc_keg.version}/specs.orig"`
-   , install glibc, unlink gcc and then install gcc
+   add file with
+   `mkdir -p`
+   and
+   `gcc -dumpspecs >`
+   when asked, install glibc, unlink gcc and then install gcc
 2. Run
    `$ ./run.sh $(pwd)`
 
