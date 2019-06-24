@@ -87,6 +87,9 @@ brew install -v fontconfig
 brew install -v glibc
 brew update
 brew edit glibc
+
+source ~/.bashrc
+
 brew install -v glibc
 
 brew unlink gcc
