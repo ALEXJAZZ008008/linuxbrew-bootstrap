@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./path.sh
+source ./path.sh $1
 
 brew install gcc --without-glibc --only-dependencies
 
@@ -60,8 +60,8 @@ brew update
 brew edit glibc
 
 echo -e "PATH: "$PATH
-echo -e "source ~/.bashrc"
-source ./path.sh
+echo -e 'source ~/.path.sh '"$1"
+source ./path.sh $1
 echo -e "PATH: "$PATH
 
 brew install -v glibc
