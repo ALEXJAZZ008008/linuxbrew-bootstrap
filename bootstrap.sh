@@ -88,7 +88,10 @@ brew install -v glibc
 brew update
 brew edit glibc
 
+echo -e "PATH: "$PATH
+echo -e "source ~/.bashrc"
 source ~/.bashrc
+echo -e "PATH: "$PATH
 
 brew install -v glibc
 
