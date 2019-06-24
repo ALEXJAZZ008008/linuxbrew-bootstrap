@@ -20,7 +20,7 @@ sed 's#"/usr/bin/curl",#"/usr/bin/curl","'$LOCALDIR/bin/curl'"#' $CURL_RB.orig \
   | sed 's#"SSL_CERT_FILE" => nil#"SSL_CERT_FILE" => nil, "LD_LIBRARY_PATH" => "'$LOCALDIR'/lib"#' \
   > $CURL_RB
 
-source ./bootstrap.sh
+source ./bootstrap.sh $1
 
 brew update
 brew install -v bzip2
