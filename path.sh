@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ "$#" -ne 1 ]
+then
+    LOCALDIR=$(readlink -f ~/local)
+else
+    LOCALDIR=$(readlink -f "$1")
+fi
+
 source /SAN/inm/tools/set_env_cluster.sh
 
 export CC=gcc
@@ -27,6 +34,6 @@ export HOMEBREW_FORCE_BREWED_GIT=1
 export HOMEBREW_BUILD_FROM_SOURCE=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-export HOMEBREW_CACHE=/SAN/inm/moco/aaaALEX/.cache
-export HOMEBREW_TEMP=/SAN/inm/moco/aaaALEX/.temp
-export HOMEBREW_LOGS=/SAN/inm/moco/aaaALEX/.log
+export HOMEBREW_CACHE="$LOCALDIR"'/.cache'
+export HOMEBREW_TEMP="$LOCALDIR"'/.temp'
+export HOMEBREW_LOGS="$LOCALDIR"'/.log'
