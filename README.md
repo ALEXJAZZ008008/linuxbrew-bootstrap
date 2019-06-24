@@ -3,17 +3,19 @@ These scripts help you to install Linuxbrew (http://linuxbrew.sh/)
 without root privilleges in minimum linux environments.
 
 # Requirements
-Required packages below are checked on debian 9 of LXD default containers.
+Required packages:
 ```
-$ apt-get install make
-$ apt-get install gcc
-$ apt-get install libdata-dump-perl
+$ ...install make
+$ ...install gcc
+$ ...install libdata-dump-perl
 ```
 
 # Install
 1. Clone this repository to $WORK directory
 2. Run
    `$ ./run.sh $(pwd)`
+   or
+   `$ ./run_run.sh`
    a prompt should appear to patch glibc, when it does replace
    `specs = Pathname.new(Utils.popen_read(ENV.cc, "-print-file-name=specs.orig").chomp)`
    with
@@ -28,12 +30,14 @@ If glibc will not install
    with
    `specs = gcc_keg.lib/"gcc/x86_64-unknown-linux-gnu/#{gcc_keg.version}/specs.orig"`
    add file with
-   `mkdir -p`
+   `$ mkdir -p...`
    and
-   `gcc -dumpspecs >`
+   `$ gcc -dumpspecs >...`
    when asked, install glibc, unlink gcc and then install gcc
-2. Run
+4. Run
    `$ ./run.sh $(pwd)`
+   or
+   `$ ./run_run.sh`
 
 or
    
