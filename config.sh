@@ -1,3 +1,5 @@
+#!/bin/bash
+
 brew install -v llvm
 
 brew tap linuxbrew/homebrew-xorg
