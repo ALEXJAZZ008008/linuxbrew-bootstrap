@@ -9,7 +9,7 @@ fi
 
 export CURL_CA_BUNDLE=$LOCALDIR/cacert.pem
 export GIT_SSL_NO_VERIFY=1
-export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+export PATH=~/.linuxbrew/bin:~/.linuxbrew/sbin:$PATH"
 source ./install-linuxbrew.sh
 
 echo "Updating brew"
