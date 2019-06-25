@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright University College London 2019
+# Author: Alexander Whitehead, Institute of Nuclear Medicine, UCL
+# For internal research only.
+
 if [ "$#" -ne 1 ]
 then
     LOCALDIR=$(readlink -f ~/local)
