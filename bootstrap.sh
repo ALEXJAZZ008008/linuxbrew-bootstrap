@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright University College London 2019
+# Author: Alexander Whitehead, Institute of Nuclear Medicine, UCL
+# For internal research only.
+
 source ./path.sh $1
 
 brew install gcc --without-glibc --only-dependencies
